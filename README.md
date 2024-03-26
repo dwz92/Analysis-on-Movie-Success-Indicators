@@ -1,4 +1,4 @@
-# Starter folder
+# Analysis on Movie Success Indicators
 
 ## Overview
 
