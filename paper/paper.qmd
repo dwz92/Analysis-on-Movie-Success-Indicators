@@ -1,14 +1,12 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
+title: "Analysis on Movie Success Indicators"
 author: 
-  - First author
-  - Another author
-thanks: "Code and data are available at: LINK."
+  - Qi Er (Emma) Teng
+thanks: "Code and data are available at: https://github.com/dwz92/Analysis-on-Movie-Success-Indicators."
 date: today
 date-format: long
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
-format: pdf
+format: html
 number-sections: true
 bibliography: references.bib
 ---
@@ -20,6 +18,10 @@ bibliography: references.bib
 
 library(tidyverse)
 library(ggplot2)
+library(dplyr)
+library(arrow)
+library(here)
+library(kableExtra)
 ```
 
 
@@ -35,18 +37,23 @@ The remainder of this paper is structured as follows. @sec-data....
 
 Some of our data is of penguins (@fig-bills), from @palmerpenguins.
 
+## Dataset Introduction
+
 ```{r}
-#| label: fig-bills
-#| fig-cap: Bills of penguins
+#| label: tbl-mov1922-mojo
+#| tbl-cap: Top 10 Total Gross Value Release from 2019
 #| echo: false
 
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = "none") +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
+mov1922 <- read_parquet(here::here("data/analysis_data/mov1922.parquet"))
+
+mov1922 |>
+  select(release, release_year, release_date, theaters, total_gross) |>
+  slice(1:10) |>
+  kable(
+    colnames = c("Title", "Release Year", "Release Date", "Released Theaters", "Total Gross Value"),
+    booktabs = TRUE
+  )
+
 ```
 
 Talk more about it.
@@ -54,24 +61,177 @@ Talk more about it.
 And also planes (@fig-planes). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work well once you have enough text.)
 
 ```{r}
-#| label: fig-planes
-#| fig-cap: Relationship between wing length and width
+#| label: tbl-basic-info
+#| tbl-cap: First Ten Rows of Basic Information from IMDb
 #| echo: false
 #| warning: false
 #| message: false
 
-analysis_data <- read_csv(here::here("data/analysis_data/analysis_data.csv"))
+titlebasic <- read_parquet(here::here("data/analysis_data/titlebasicraw.parquet"))
 
-analysis_data |> 
-  ggplot(aes(x = width, y = length)) +
-  geom_point(alpha = 0.8) +
-  theme_minimal() +
-  labs(x = "Wing width (mm)",
-       y = "Wing length (mm)")
+titlebasic |>
+  select(originalTitle, startYear, genres, tconst) |>
+  kable(
+    colnames = c("Title", "Release Year", "Genres", "IMDb primary key"),
+    booktabs = TRUE
+  )
 ```
 
 Talk way more about it. 
 
+```{r}
+#| label: tbl-rating
+#| tbl-cap: First Ten Rows of Movie Rating from IMDb
+#| echo: false
+#| warning: false
+#| message: false
+
+titlerate <- read_parquet(here::here("data/analysis_data/titlerateraw.parquet"))
+
+titlerate |>
+  select(averageRating, numVotes, tconst) |>
+  kable(
+    colnames = c("Rating", "Number of Votes", "IMDb primary key"),
+    booktabs = TRUE
+  )
+```
+
+## Variable
+
+```{r}
+#| label: tbl-rating-info
+#| tbl-cap: First Ten Rows of Movie Rating and Basic Information
+#| echo: false
+#| warning: false
+#| message: false
+
+movcomb <- read_parquet(here::here("data/analysis_data/movcomb.parquet"))
+
+movcomb |>
+  select(release, release_year, release_date, genres, averageRating, theaters) |>
+  slice(1:10) |>
+  kable(
+    colnames = c("Title", "Release Year", "Release Date", "Genres", "Rating", "Released Theaters"),
+    booktabs = TRUE
+  )
+```
+
+
+### Relationship between Movie Success from 2019 to 2022 by Release Theaters
+
+```{r}
+#| label: fig-2019-movie-success-theaters
+#| fig-cap: Movie Success in 2019 by Release Theaters
+#| echo: false
+#| warning: false
+#| message: false
+
+movcomb <- read_parquet(here::here("data/analysis_data/movcomb.parquet"))
+
+mov2019 <- movcomb
+
+mov2019 <- mov2019 |>
+  filter(release_year == 2019)
+
+ggplot(mov2019, aes(x = plot_date, y = averageRating, fill = theaters)) +
+  geom_point(shape = 21, size = 4) +
+  ggtitle("Movie Success in 2019 by Release Theaters") +
+  labs(x = "Month of Release",
+       y = "Average Rating",
+       fill = "Release Theaters") +
+  scale_x_date(date_labels = "%b %d", date_breaks = "1 month") +
+  scale_fill_gradient(low = "lightblue", high = "darkred") +
+  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "right")
+```
+
+
+```{r}
+#| label: fig-2020-movie-success-theaters
+#| fig-cap: Movie Success in 2020 by Release Theaters
+#| echo: false
+#| warning: false
+#| message: false
+
+movcomb <- read_parquet(here::here("data/analysis_data/movcomb.parquet"))
+
+mov2020 <- movcomb
+
+mov2020 <- mov2020 |>
+  filter(release_year == 2020)
+
+ggplot(mov2020, aes(x = plot_date, y = averageRating, fill = theaters)) +
+  geom_point(shape = 21, size = 4) +
+  ggtitle("Movie Success in 2020 by Release Theaters") +
+  labs(x = "Month of Release",
+       y = "Average Rating",
+       fill = "Release Theaters") +
+  scale_x_date(date_labels = "%b %d", date_breaks = "1 month") +
+  scale_fill_gradient(low = "lightblue", high = "darkred") +
+  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "right")
+```
+
+```{r}
+#| label: fig-2021-movie-success-theaters
+#| fig-cap: Movie Success in 2021 by Release Theaters
+#| echo: false
+#| warning: false
+#| message: false
+
+movcomb <- read_parquet(here::here("data/analysis_data/movcomb.parquet"))
+
+mov2021 <- movcomb
+
+mov2021 <- mov2021 |>
+  filter(release_year == 2021)
+
+ggplot(mov2021, aes(x = plot_date, y = averageRating, fill = theaters)) +
+  geom_point(shape = 21, size = 4) +
+  ggtitle("Movie Success in 2021 by Release Theaters") +
+  labs(x = "Month of Release",
+       y = "Average Rating",
+       fill = "Release Theaters") +
+  scale_x_date(date_labels = "%b %d", date_breaks = "1 month") +
+  scale_fill_gradient(low = "lightblue", high = "darkred") +
+  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "right")
+```
+
+
+```{r}
+#| label: fig-2022-movie-success-theaters
+#| fig-cap: Movie Success in 2022 by Release Theaters
+#| echo: false
+#| warning: false
+#| message: false
+
+movcomb <- read_parquet(here::here("data/analysis_data/movcomb.parquet"))
+
+mov2022 <- movcomb
+
+mov2022 <- mov2022 |>
+  filter(release_year == 2022)
+
+ggplot(mov2022, aes(x = plot_date, y = averageRating, fill = theaters)) +
+  geom_point(shape = 21, size = 4) +
+  ggtitle("Movie Success in 2022 by Release Theaters") +
+  labs(x = "Month of Release",
+       y = "Average Rating",
+       fill = "Release Theaters") +
+  scale_x_date(date_labels = "%b %d", date_breaks = "1 month") +
+  scale_fill_gradient(low = "lightblue", high = "darkred") +
+  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "right")
+```
 
 
 # Model
@@ -117,8 +277,7 @@ Our results are summarized in @tbl-modelresults.
 
 library(rstanarm)
 
-first_model <-
-  readRDS(file = here::here("models/first_model.rds"))
+
 ```
 
 ```{r}
@@ -128,13 +287,7 @@ first_model <-
 #| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
 #| warning: false
 
-modelsummary::modelsummary(
-  list(
-    "First model" = first_model
-  ),
-  statistic = "mad",
-  fmt = 2
-)
+
 ```
 
 
@@ -181,15 +334,7 @@ In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. Th
 #| fig-cap: "Examining how the model fits, and is affected by, the data"
 #| fig-subcap: ["Posterior prediction check", "Comparing the posterior with the prior"]
 
-pp_check(first_model) +
-  theme_classic() +
-  theme(legend.position = "bottom")
 
-posterior_vs_prior(first_model) +
-  theme_minimal() +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "bottom") +
-  coord_flip()
 ```
 
 ## Diagnostics
@@ -208,9 +353,7 @@ posterior_vs_prior(first_model) +
 #| fig-subcap: ["Trace plot", "Rhat plot"]
 #| layout-ncol: 2
 
-plot(first_model, "trace")
 
-plot(first_model, "rhat")
 ```
 
 

@@ -51,7 +51,8 @@ write_parquet(x = mov1922,
 titlebasic <- read_tsv(here::here("data/raw_data/title.basics.tsv"))
 titlerate <- read_tsv(here::here("data/raw_data/title.ratings.tsv"))
 
-#Save sample of raw data
+##Save sample of raw data##
+
 write_parquet(titlebasic[1:10,],
           "data/analysis_data/titlebasicraw.parquet")
 write_parquet(titlerate[1:10,],
@@ -68,9 +69,18 @@ mov_s2 <- titlecomb |>
     "release_year" = startYear
   )
 
+## Clean Data for Plotting##
+
 mov_s2 <- mov_s2 |>
   inner_join(mov1922, by = c("release", "release_year"))
+
+mov_s2$plot_date <- as.Date(mov_s2$release_date, format="%b %d")
+
+mov_s2$release_year <- as.factor(mov_s2$release_year)
+
+mov_s2$theaters <- as.numeric(gsub(",", "", mov_s2$theaters))
   
+mov_s2
 
 write_parquet(x = mov_s2,
              sink = "data/analysis_data/movcomb.parquet")
