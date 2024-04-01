@@ -1,11 +1,9 @@
 #### Preamble ####
 # Purpose: Simulates... [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 11 February 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
+# Author: Qi Er (Emma) Teng
+# Date: 28 March 2024
+# Contact: e.teng@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
 
 
 #### Workspace setup ####
@@ -29,12 +27,13 @@ print(unique_genres)
 df_long <- movcomb
 
 df_long <- df_long %>%
+  filter(release_year == 2022) |>
   separate_rows(genres, sep = ",") %>%
   mutate(genres = trimws(genres)) %>%
   group_by(genres) %>%
   summarise(
     averageRating = mean(averageRating, na.rm = TRUE),
-    numVotes = sum(numVotes, na.rm = TRUE)  # This will be used for the bubble sizes
+    numVotes = sum(theaters, na.rm = TRUE)
   )
 
 # Create the plot
