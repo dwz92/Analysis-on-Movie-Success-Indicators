@@ -12,6 +12,7 @@ library(ggplot2)
 library(dplyr)
 library(kableExtra)
 library(ggrepel)
+library(arrow)
 
 #### Simulate data ####
 movcomb <- read_parquet(here::here("data/analysis_data/movcomb.parquet"))
@@ -26,29 +27,32 @@ print(unique_genres)
 
 df_long <- movcomb
 
-df_long <- df_long %>%
+df_long <- df_long |>
   filter(release_year == 2022) |>
-  separate_rows(genres, sep = ",") %>%
-  mutate(genres = trimws(genres)) %>%
-  group_by(genres) %>%
+  separate_rows(genres, sep = ",") |>
+  mutate(genres = trimws(genres)) |>
+  group_by(genres) |>
   summarise(
+    
     averageRating = mean(averageRating, na.rm = TRUE),
-    numVotes = sum(theaters, na.rm = TRUE)
+    numRele = sum(theaters, na.rm = TRUE)
   )
 
+
+
 # Create the plot
-ggplot(df_long, aes(x = reorder(genres, numVotes), y = averageRating, size = numVotes, label = genres)) +
-  geom_point(alpha = 0.5, color = "blue") +
+ggplot(df_long, aes(x = reorder(genres, numRele), y = averageRating, size = numRele, label = genres)) +
+  geom_point(alpha = 0.5, color = "lightblue") +
   geom_text_repel(
     aes(label = genres),
-    size = 5,  # Adjust the size of the text to fit inside the bubbles
-    max.overlaps = Inf,  # Allow text labels to overlap each other if necessary
-    point.padding = NA,  # Control the distance between the text and the point
-    box.padding = 0.35,  # Adjust the padding around the text
-    segment.color = NA  # Hide the repelling lines
+    size = 5,  
+    max.overlaps = Inf, 
+    point.padding = NA,
+    box.padding = 0.35,
+    segment.color = NA 
   ) +
-  scale_size_continuous(range = c(5, 30)) +  # Adjust range to control bubble sizes
+  scale_size_continuous(range = c(5, 30)) +
   theme_minimal() +
-  theme(legend.position = "none",  # Hide the legend for size
-        axis.text.x = element_text(angle = 45, hjust = 1)) +  # Rotate x labels
-  labs(x = "Genre", y = "Average Rating", title = "Movie Ratings by Genre")
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = "Genre", y = "Average Rating", title = "Movie Ratings by Genre in 2022")

@@ -6,7 +6,7 @@ thanks: "Code and data are available at: https://github.com/dwz92/Analysis-on-Mo
 date: today
 date-format: long
 abstract: "In this study, we delve into the variables contributing to movie success, focusing on the interplay between a movies’ genre, number of theaters showing, the moth of release, and the year of premiere, particularly in the context of the pre and post-COVID-19 era, spanning from 2019 to 2022. This comprehensive analysis aims to shed light on the nuanced relationship between these variables and movie success, highlighting how the cinematic landscape has evolved in response to the COVID-19 pandemic. The findings of this study enrich our understanding of the determinants of cinematic success, providing valuable insights for filmmakers, distributors, and industry strategists in navigating the changing film industry."
-format: pdf
+format: html
 number-sections: true
 bibliography: references.bib
 ---
@@ -22,6 +22,7 @@ library(dplyr)
 library(arrow)
 library(here)
 library(kableExtra)
+library(ggrepel)
 ```
 
 
@@ -53,7 +54,7 @@ mov1922 |>
   select(release, release_year, release_date, theaters, total_gross) |>
   slice(1:10) |>
   kable(
-    colnames = c("Title", "Release Year", "Release Date", "Released Theaters", "Total Gross Value"),
+    col.names = c("Title", "Release Year", "Release Date", "Released Theaters", "Total Gross Value"),
     booktabs = TRUE
   )
 
@@ -75,7 +76,7 @@ titlebasic <- read_parquet(here::here("data/analysis_data/titlebasicraw.parquet"
 titlebasic |>
   select(originalTitle, startYear, genres, tconst) |>
   kable(
-    colnames = c("Title", "Release Year", "Genres", "IMDb primary key"),
+    col.names = c("Title", "Release Year", "Genres", "IMDb primary key"),
     booktabs = TRUE
   )
 ```
@@ -94,7 +95,7 @@ titlerate <- read_parquet(here::here("data/analysis_data/titlerateraw.parquet"))
 titlerate |>
   select(averageRating, numVotes, tconst) |>
   kable(
-    colnames = c("Rating", "Number of Votes", "IMDb primary key"),
+    col.names = c("Rating", "Number of Votes", "IMDb primary key"),
     booktabs = TRUE
   )
 ```
@@ -116,7 +117,7 @@ movcomb |>
   select(release, release_year, release_date, genres, averageRating, theaters) |>
   slice(1:10) |>
   kable(
-    colnames = c("Title", "Release Year", "Release Date", "Genres", "Rating", "Released Theaters"),
+    col.names = c("Title", "Release Year", "Release Date", "Genres", "Rating", "Released Theaters"),
     booktabs = TRUE
   )
 ```
@@ -248,6 +249,182 @@ ggplot(mov2022, aes(x = plot_date, y = averageRating, fill = theaters)) +
 
 //TODO
 
+```{r}
+#| label: fig-2019-movie-success-genre
+#| fig-cap: Movie Success in 2019 by Genre
+#| echo: false
+#| warning: false
+#| message: false
+
+movcomb <- read_parquet(here::here("data/analysis_data/movcomb.parquet"))
+
+df_long <- movcomb
+
+df_long <- df_long |>
+  filter(release_year == 2019) |>
+  separate_rows(genres, sep = ",") |>
+  mutate(genres = trimws(genres)) |>
+  group_by(genres) |>
+  summarise(
+    
+    averageRating = mean(averageRating, na.rm = TRUE),
+    numRele = sum(theaters, na.rm = TRUE)
+  )
+
+
+# Create the plot
+ggplot(df_long, aes(x = reorder(genres, numRele), y = averageRating, size = numRele, label = genres)) +
+  geom_point(alpha = 0.5, color = "lightblue") +
+  geom_text_repel(
+    aes(label = genres),
+    size = 5,  
+    max.overlaps = Inf, 
+    point.padding = NA,
+    box.padding = 0.35,
+    segment.color = NA 
+  ) +
+  scale_size_continuous(range = c(5, 30)) +
+  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = "Genre", y = "Average Rating", title = "Movie Ratings by Genre in 2019")
+```
+
+//TODO
+
+```{r}
+#| label: fig-2020-movie-success-genre
+#| fig-cap: Movie Success in 2020 by Genre
+#| echo: false
+#| warning: false
+#| message: false
+
+movcomb <- read_parquet(here::here("data/analysis_data/movcomb.parquet"))
+
+df_long <- movcomb
+
+df_long <- df_long |>
+  filter(release_year == 2020) |>
+  separate_rows(genres, sep = ",") |>
+  mutate(genres = trimws(genres)) |>
+  group_by(genres) |>
+  summarise(
+    
+    averageRating = mean(averageRating, na.rm = TRUE),
+    numRele = sum(theaters, na.rm = TRUE)
+  )
+
+
+# Create the plot
+ggplot(df_long, aes(x = reorder(genres, numRele), y = averageRating, size = numRele, label = genres)) +
+  geom_point(alpha = 0.5, color = "lightblue") +
+  geom_text_repel(
+    aes(label = genres),
+    size = 5,  
+    max.overlaps = Inf, 
+    point.padding = NA,
+    box.padding = 0.35,
+    segment.color = NA 
+  ) +
+  scale_size_continuous(range = c(5, 30)) +
+  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = "Genre", y = "Average Rating", title = "Movie Ratings by Genre in 2020")
+```
+
+//TODO
+
+```{r}
+#| label: fig-2021-movie-success-genre
+#| fig-cap: Movie Success in 2021 by Genre
+#| echo: false
+#| warning: false
+#| message: false
+
+movcomb <- read_parquet(here::here("data/analysis_data/movcomb.parquet"))
+
+df_long <- movcomb
+
+df_long <- df_long |>
+  filter(release_year == 2021) |>
+  separate_rows(genres, sep = ",") |>
+  mutate(genres = trimws(genres)) |>
+  group_by(genres) |>
+  summarise(
+    
+    averageRating = mean(averageRating, na.rm = TRUE),
+    numRele = sum(theaters, na.rm = TRUE)
+  )
+
+
+# Create the plot
+ggplot(df_long, aes(x = reorder(genres, numRele), y = averageRating, size = numRele, label = genres)) +
+  geom_point(alpha = 0.5, color = "lightblue") +
+  geom_text_repel(
+    aes(label = genres),
+    size = 5,  
+    max.overlaps = Inf, 
+    point.padding = NA,
+    box.padding = 0.35,
+    segment.color = NA 
+  ) +
+  scale_size_continuous(range = c(5, 30)) +
+  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = "Genre", y = "Average Rating", title = "Movie Ratings by Genre in 2021")
+```
+
+//TODO
+
+```{r}
+#| label: fig-2022-movie-success-genre
+#| fig-cap: Movie Success in 2022 by Genre
+#| echo: false
+#| warning: false
+#| message: false
+
+movcomb <- read_parquet(here::here("data/analysis_data/movcomb.parquet"))
+
+df_long <- movcomb
+
+df_long <- df_long |>
+  filter(release_year == 2022) |>
+  separate_rows(genres, sep = ",") |>
+  mutate(genres = trimws(genres)) |>
+  group_by(genres) |>
+  summarise(
+    
+    averageRating = mean(averageRating, na.rm = TRUE),
+    numRele = sum(theaters, na.rm = TRUE)
+  )
+
+
+# Create the plot
+ggplot(df_long, aes(x = reorder(genres, numRele), y = averageRating, size = numRele, label = genres)) +
+  geom_point(alpha = 0.5, color = "lightblue") +
+  geom_text_repel(
+    aes(label = genres),
+    size = 5,  
+    max.overlaps = Inf, 
+    point.padding = NA,
+    box.padding = 0.35,
+    segment.color = NA 
+  ) +
+  scale_size_continuous(range = c(5, 30)) +
+  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = "Genre", y = "Average Rating", title = "Movie Ratings by Genre in 2022")
+```
+
+//TODO
+
 # Model
 
 //TODO
@@ -256,14 +433,14 @@ ggplot(mov2022, aes(x = plot_date, y = averageRating, fill = theaters)) +
 
 //TODO
 
+
 \begin{align} 
-y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
-\mu_i &= \alpha + \beta_i + \gamma_i\\
-\alpha &\sim \mbox{Normal}(0, 2.5) \\
-\beta &\sim \mbox{Normal}(0, 2.5) \\
-\gamma &\sim \mbox{Normal}(0, 2.5) \\
-\sigma &\sim \mbox{Exponential}(1)
-\end{align}
+y_i|\mu_i &\sim \mbox{Bern}(\mu_i) \\
+logit(\mu_i) &= \beta_0 + \beta_{y[i]}^{year} + \beta_{t[i]}^{theater} \\
+\beta_0 &\sim \mbox{Normal}(0, 2.5) \\
+\beta_{y[i]}^{year} &\sim \mbox{Normal}(0, 2.5) for \space y = 2019, 2020, 2021, 2022 \\
+\\beta_{t[i]}^{theater} &\sim  \mbox{Normal}(0, 2.5) for \space t = 0, T
+\end{align} 
 
 We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
 

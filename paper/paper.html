@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Qi Er (Emma) Teng">
-<meta name="dcterms.date" content="2024-03-31">
+<meta name="dcterms.date" content="2024-04-13">
 
 <title>Analysis on Movie Success Indicators</title>
 <style>
@@ -85,7 +85,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 31, 2024</p>
+      <p class="date">April 13, 2024</p>
     </div>
   </div>
   
@@ -95,7 +95,7 @@ div.csl-indent {
 <div>
   <div class="abstract">
     <div class="abstract-title">Abstract</div>
-    First sentence. Second sentence. Third sentence. Fourth sentence.
+    In this study, we delve into the variables contributing to movie success, focusing on the interplay between a movies’ genre, number of theaters showing, the moth of release, and the year of premiere, particularly in the context of the pre and post-COVID-19 era, spanning from 2019 to 2022. This comprehensive analysis aims to shed light on the nuanced relationship between these variables and movie success, highlighting how the cinematic landscape has evolved in response to the COVID-19 pandemic. The findings of this study enrich our understanding of the determinants of cinematic success, providing valuable insights for filmmakers, distributors, and industry strategists in navigating the changing film industry.
   </div>
 </div>
 
@@ -103,12 +103,13 @@ div.csl-indent {
 
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>You can and should cross-reference sections and sub-sections. We use <span class="citation" data-cites="citeR">R Core Team (<a href="#ref-citeR" role="doc-biblioref">2023</a>)</span> and <span class="citation" data-cites="rohan">Wickham et al. (<a href="#ref-rohan" role="doc-biblioref">2019</a>)</span>.</p>
-<p>The remainder of this paper is structured as follows. <a href="#sec-data">Section&nbsp;2</a>….</p>
+<p>In the realm of global entertainment, movies hold a pivotal role, not only as a form of artistic expression but also as a significant driver of cultural and economic activity. The advent of COVID-19 has precipitated profound changes across the global media landscape, altering audience behaviors and consumption patterns. The surge in online media consumption during the pandemic has brought unprecedented challenges and transformations to the traditional movie industry. This shift has prompted a reevaluation of what factors contribute to a movie’s success in an era where digital platforms are increasingly dominating. Against this backdrop, this paper aims to analyze several indicators related to movie success, taking into account the impact of COVID-19 on both the production and consumption of films. By examining the interplay between various factors and movie ratings, this study seeks to uncover insights into the dynamics of movie success in a rapidly evolving media environment.</p>
+<p>Employing a multifaceted analytical approach that combines genre classification, theaters metrics, seasonal release timing, and annual trends, we probed the determinants of cinematic success in the fluctuating entertainment landscape from 2019 to 2022. Our study meticulously compiled data from Box Office Mojo and IMDb, focusing on films that achieved a commendable rating of 7/10 or above, signifying both critical and popular acclaim. Through the application of advanced statistical techniques and web scraping tools, we dissected the top 200 grossing films to unravel the intricate relationship between these variables and their collective impact on a movie’s success. A higher performance in these metrics typically correlates with a movie’s ability to resonate with diverse audiences, navigate distribution challenges, and capitalize on favorable release windows. This analysis not only sheds light on the evolving criteria for what makes a movie successful in the digital age but also offers insights into the strategic considerations filmmakers and distributors must weigh in an increasingly competitive and segmented market.</p>
+<p>The paper is structured to facilitate a comprehensive understanding of the study and its implications. Following Section 1, Section 2 presents the data, detailing the data sources, analytical techniques, and the rationale behind the chosen methods. Section 4 discusses the results. Section 5 provides an in-depth discussion of these findings.</p>
 </section>
 <section id="sec-data" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Data</h1>
-<p>Some of our data is of penguins (<strong>?@fig-bills</strong>), from <span class="citation" data-cites="palmerpenguins">Horst, Hill, and Gorman (<a href="#ref-palmerpenguins" role="doc-biblioref">2020</a>)</span>.</p>
+<p>//TODO</p>
 <section id="dataset-introduction" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="dataset-introduction"><span class="header-section-number">2.1</span> Dataset Introduction</h2>
 <div class="cell">
@@ -117,19 +118,19 @@ div.csl-indent {
 <table class="table table-sm table-striped small">
 <caption>Table&nbsp;1: Top 10 Total Gross Value Release from 2019</caption>
 <colgroup>
-<col style="width: 48%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 9%">
-<col style="width: 13%">
+<col style="width: 42%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">release</th>
-<th style="text-align: left;">release_year</th>
-<th style="text-align: left;">release_date</th>
-<th style="text-align: left;">theaters</th>
-<th style="text-align: left;">total_gross</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Release Year</th>
+<th style="text-align: left;">Release Date</th>
+<th style="text-align: left;">Released Theaters</th>
+<th style="text-align: left;">Total Gross Value</th>
 </tr>
 </thead>
 <tbody>
@@ -209,24 +210,24 @@ div.csl-indent {
 </div>
 </div>
 <p>Talk more about it.</p>
-<p>And also planes (<strong>?@fig-planes</strong>). (You can change the height and width, but don’t worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work well once you have enough text.)</p>
+<p>// TODO</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-basic-info" class="anchored">
 <table class="table table-sm table-striped small">
 <caption>Table&nbsp;2: First Ten Rows of Basic Information from IMDb</caption>
 <colgroup>
-<col style="width: 49%">
-<col style="width: 11%">
-<col style="width: 28%">
-<col style="width: 11%">
+<col style="width: 44%">
+<col style="width: 13%">
+<col style="width: 25%">
+<col style="width: 17%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">originalTitle</th>
-<th style="text-align: left;">startYear</th>
-<th style="text-align: left;">genres</th>
-<th style="text-align: left;">tconst</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Release Year</th>
+<th style="text-align: left;">Genres</th>
+<th style="text-align: left;">IMDb primary key</th>
 </tr>
 </thead>
 <tbody>
@@ -295,7 +296,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Talk way more about it.</p>
+<p>//TODO</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-rating" class="anchored">
@@ -303,9 +304,9 @@ div.csl-indent {
 <caption>Table&nbsp;3: First Ten Rows of Movie Rating from IMDb</caption>
 <thead>
 <tr class="header">
-<th style="text-align: right;">averageRating</th>
-<th style="text-align: right;">numVotes</th>
-<th style="text-align: left;">tconst</th>
+<th style="text-align: right;">Rating</th>
+<th style="text-align: right;">Number of Votes</th>
+<th style="text-align: left;">IMDb primary key</th>
 </tr>
 </thead>
 <tbody>
@@ -364,6 +365,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
+<p>//TODO</p>
 </section>
 <section id="variable" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="variable"><span class="header-section-number">2.2</span> Variable</h2>
@@ -373,21 +375,21 @@ div.csl-indent {
 <table class="table table-sm table-striped small">
 <caption>Table&nbsp;4: First Ten Rows of Movie Rating and Basic Information</caption>
 <colgroup>
-<col style="width: 22%">
+<col style="width: 21%">
 <col style="width: 13%">
 <col style="width: 13%">
-<col style="width: 26%">
-<col style="width: 14%">
-<col style="width: 9%">
+<col style="width: 25%">
+<col style="width: 7%">
+<col style="width: 18%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">release</th>
-<th style="text-align: left;">release_year</th>
-<th style="text-align: left;">release_date</th>
-<th style="text-align: left;">genres</th>
-<th style="text-align: right;">averageRating</th>
-<th style="text-align: right;">theaters</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Release Year</th>
+<th style="text-align: left;">Release Date</th>
+<th style="text-align: left;">Genres</th>
+<th style="text-align: right;">Rating</th>
+<th style="text-align: right;">Released Theaters</th>
 </tr>
 </thead>
 <tbody>
@@ -476,6 +478,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
+<p>//TODO</p>
 <section id="relationship-between-movie-success-from-2019-to-2022-by-release-theaters" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="relationship-between-movie-success-from-2019-to-2022-by-release-theaters"><span class="header-section-number">2.2.1</span> Relationship between Movie Success from 2019 to 2022 by Release Theaters</h3>
 <div class="cell">
@@ -488,6 +491,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
+<p>//TODO</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-2020-movie-success-theaters" class="quarto-figure quarto-figure-center anchored">
@@ -498,6 +502,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
+<p>//TODO</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-2021-movie-success-theaters" class="quarto-figure quarto-figure-center anchored">
@@ -508,6 +513,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
+<p>//TODO</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-2022-movie-success-theaters" class="quarto-figure quarto-figure-center anchored">
@@ -518,38 +524,81 @@ div.csl-indent {
 </div>
 </div>
 </div>
+<p>//TODO</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-2019-movie-success-genre" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="paper_files/figure-html/fig-2019-movie-success-genre-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;5: Movie Success in 2019 by Genre</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>//TODO</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-2020-movie-success-genre" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="paper_files/figure-html/fig-2020-movie-success-genre-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;6: Movie Success in 2020 by Genre</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>//TODO</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-2021-movie-success-genre" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="paper_files/figure-html/fig-2021-movie-success-genre-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;7: Movie Success in 2021 by Genre</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>//TODO</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-2022-movie-success-genre" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="paper_files/figure-html/fig-2022-movie-success-genre-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;8: Movie Success in 2022 by Genre</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>//TODO</p>
 </section>
 </section>
 </section>
 <section id="model" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Model</h1>
-<p>The goal of our modelling strategy is twofold. Firstly,…</p>
-<p>Here we briefly describe the Bayesian analysis model used to investigate… Background details and diagnostics are included in <a href="#sec-model-details">Appendix&nbsp;7</a>.</p>
+<p>//TODO</p>
 <section id="model-set-up" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="model-set-up"><span class="header-section-number">3.1</span> Model set-up</h2>
-<p>Define <span class="math inline">\(y_i\)</span> as the number of seconds that the plane remained aloft. Then <span class="math inline">\(\beta_i\)</span> is the wing width and <span class="math inline">\(\gamma_i\)</span> is the wing length, both measured in millimeters.</p>
+<p>//TODO</p>
 <p><span class="math display">\[\begin{align}
-y_i|\mu_i, \sigma &amp;\sim \mbox{Normal}(\mu_i, \sigma) \\
-\mu_i &amp;= \alpha + \beta_i + \gamma_i\\
-\alpha &amp;\sim \mbox{Normal}(0, 2.5) \\
-\beta &amp;\sim \mbox{Normal}(0, 2.5) \\
-\gamma &amp;\sim \mbox{Normal}(0, 2.5) \\
-\sigma &amp;\sim \mbox{Exponential}(1)
+y_i|\mu_i &amp;\sim \mbox{Bern}(\mu_i) \\
+logit(\mu_i) &amp;= \beta_0 + \beta_{y[i]}^{year} + \beta_{t[i]}^{theater} \\
+\beta_0 &amp;\sim \mbox{Normal}(0, 2.5) \\
+\beta_{y[i]}^{year} &amp;\sim \mbox{Normal}(0, 2.5) for \space y = 2019, 2020, 2021, 2022 \\
+\\beta_{t[i]}^{theater} &amp;\sim  \mbox{Normal}(0, 2.5) for \space t = 0
 \end{align}\]</span></p>
 <p>We run the model in R <span class="citation" data-cites="citeR">(<a href="#ref-citeR" role="doc-biblioref">R Core Team 2023</a>)</span> using the <code>rstanarm</code> package of <span class="citation" data-cites="rstanarm">Goodrich et al. (<a href="#ref-rstanarm" role="doc-biblioref">2022</a>)</span>. We use the default priors from <code>rstanarm</code>.</p>
 <section id="model-justification" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="model-justification"><span class="header-section-number">3.1.1</span> Model justification</h3>
-<p>We expect a positive relationship between the size of the wings and time spent aloft. In particular…</p>
-<p>We can use maths by including latex between dollar signs, for instance <span class="math inline">\(\theta\)</span>.</p>
+<p>//TODO</p>
 </section>
 <section id="model-prediction" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="model-prediction"><span class="header-section-number">3.1.2</span> Model prediction</h3>
+<p>//TODO</p>
 </section>
 </section>
 </section>
 <section id="results" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Results</h1>
-<p>Our results are summarized in <strong>?@tbl-modelresults</strong>.</p>
+<p>//TODO</p>
 <div id="tbl-modelresults" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="Explanatory models of flight time based on wing width and wing length">
 
 </div>
@@ -558,7 +607,7 @@ y_i|\mu_i, \sigma &amp;\sim \mbox{Normal}(\mu_i, \sigma) \\
 <h1 data-number="5"><span class="header-section-number">5</span> Discussion</h1>
 <section id="sec-first-point" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="sec-first-point"><span class="header-section-number">5.1</span> First discussion point</h2>
-<p>If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this.</p>
+<p>//TODO</p>
 </section>
 <section id="second-discussion-point" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="second-discussion-point"><span class="header-section-number">5.2</span> Second discussion point</h2>
@@ -568,7 +617,7 @@ y_i|\mu_i, \sigma &amp;\sim \mbox{Normal}(\mu_i, \sigma) \\
 </section>
 <section id="weaknesses-and-next-steps" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="weaknesses-and-next-steps"><span class="header-section-number">5.4</span> Weaknesses and next steps</h2>
-<p>Weaknesses and next steps should also be included.</p>
+<p>//TODO</p>
 <div style="page-break-after: always;"></div>
 </section>
 </section>
@@ -582,8 +631,7 @@ y_i|\mu_i, \sigma &amp;\sim \mbox{Normal}(\mu_i, \sigma) \\
 <h1 data-number="7"><span class="header-section-number">7</span> Model details</h1>
 <section id="posterior-predictive-check" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="posterior-predictive-check"><span class="header-section-number">7.1</span> Posterior predictive check</h2>
-<p>In <strong>?@fig-ppcheckandposteriorvsprior-1</strong> we implement a posterior predictive check. This shows…</p>
-<p>In <strong>?@fig-ppcheckandposteriorvsprior-2</strong> we compare the posterior with the prior. This shows…</p>
+<p>//TODO</p>
 <div id="fig-ppcheckandposteriorvsprior" class="cell quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -591,14 +639,13 @@ y_i|\mu_i, \sigma &amp;\sim \mbox{Normal}(\mu_i, \sigma) \\
 <p>Examining how the model fits, and is affected by, the data</p>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5: <strong>?(caption)</strong></figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9: <strong>?(caption)</strong></figcaption><p></p>
 </figure>
 </div>
 </section>
 <section id="diagnostics" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="diagnostics"><span class="header-section-number">7.2</span> Diagnostics</h2>
-<p><strong>?@fig-stanareyouokay-1</strong> is a trace plot. It shows… This suggests…</p>
-<p><strong>?@fig-stanareyouokay-2</strong> is a Rhat plot. It shows… This suggests…</p>
+<p>//TODO</p>
 <div id="fig-stanareyouokay" class="cell quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -606,7 +653,7 @@ y_i|\mu_i, \sigma &amp;\sim \mbox{Normal}(\mu_i, \sigma) \\
 <p>Checking the convergence of the MCMC algorithm</p>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6: <strong>?(caption)</strong></figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10: <strong>?(caption)</strong></figcaption><p></p>
 </figure>
 </div>
 <div style="page-break-after: always;"></div>
@@ -621,14 +668,8 @@ y_i|\mu_i, \sigma &amp;\sim \mbox{Normal}(\mu_i, \sigma) \\
 <div id="ref-rstanarm" class="csl-entry" role="listitem">
 Goodrich, Ben, Jonah Gabry, Imad Ali, and Sam Brilleman. 2022. <span>“Rstanarm: <span>Bayesian</span> Applied Regression Modeling via <span>Stan</span>.”</span> <a href="https://mc-stan.org/rstanarm/">https://mc-stan.org/rstanarm/</a>.
 </div>
-<div id="ref-palmerpenguins" class="csl-entry" role="listitem">
-Horst, Allison Marie, Alison Presmanes Hill, and Kristen B Gorman. 2020. <em>Palmerpenguins: Palmer Archipelago (Antarctica) Penguin Data</em>. <a href="https://doi.org/10.5281/zenodo.3960218">https://doi.org/10.5281/zenodo.3960218</a>.
-</div>
 <div id="ref-citeR" class="csl-entry" role="listitem">
 R Core Team. 2023. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
-</div>
-<div id="ref-rohan" class="csl-entry" role="listitem">
-Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
 </div>
 </div></section></div></main>
 <!-- /main column -->
