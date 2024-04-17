@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Qi Er (Emma) Teng">
-<meta name="dcterms.date" content="2024-04-13">
+<meta name="dcterms.date" content="2024-04-16">
 
 <title>Analysis on Movie Success Indicators</title>
 <style>
@@ -85,7 +85,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 13, 2024</p>
+      <p class="date">April 16, 2024</p>
     </div>
   </div>
   
@@ -583,7 +583,7 @@ y_i|\mu_i &amp;\sim \mbox{Bern}(\mu_i) \\
 logit(\mu_i) &amp;= \beta_0 + \beta_{y[i]}^{year} + \beta_{t[i]}^{theater} \\
 \beta_0 &amp;\sim \mbox{Normal}(0, 2.5) \\
 \beta_{y[i]}^{year} &amp;\sim \mbox{Normal}(0, 2.5) for \space y = 2019, 2020, 2021, 2022 \\
-\\beta_{t[i]}^{theater} &amp;\sim  \mbox{Normal}(0, 2.5) for \space t = 0
+\\beta_{t[i]}^{theater} &amp;\sim  \mbox{Normal}(0, 2.5) for \space t = 0, T
 \end{align}\]</span></p>
 <p>We run the model in R <span class="citation" data-cites="citeR">(<a href="#ref-citeR" role="doc-biblioref">R Core Team 2023</a>)</span> using the <code>rstanarm</code> package of <span class="citation" data-cites="rstanarm">Goodrich et al. (<a href="#ref-rstanarm" role="doc-biblioref">2022</a>)</span>. We use the default priors from <code>rstanarm</code>.</p>
 <section id="model-justification" class="level3" data-number="3.1.1">
