@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Qi Er (Emma) Teng">
-<meta name="dcterms.date" content="2024-04-16">
+<meta name="dcterms.date" content="2024-04-18">
 
 <title>Analysis on Movie Success Indicators</title>
 <style>
@@ -55,6 +55,9 @@ div.csl-indent {
 <link href="paper_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="paper_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
+<script src="paper_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="paper_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -85,7 +88,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 16, 2024</p>
+      <p class="date">April 18, 2024</p>
     </div>
   </div>
   
@@ -580,10 +583,9 @@ div.csl-indent {
 <p>//TODO</p>
 <p><span class="math display">\[\begin{align}
 y_i|\mu_i &amp;\sim \mbox{Bern}(\mu_i) \\
-logit(\mu_i) &amp;= \beta_0 + \beta_{y[i]}^{year} + \beta_{t[i]}^{theater} \\
+logit(\mu_i) &amp;= \beta_0 + \beta_{y[i]}^{year} + \beta_2 \space \times \space theater_i \\
 \beta_0 &amp;\sim \mbox{Normal}(0, 2.5) \\
 \beta_{y[i]}^{year} &amp;\sim \mbox{Normal}(0, 2.5) for \space y = 2019, 2020, 2021, 2022 \\
-\\beta_{t[i]}^{theater} &amp;\sim  \mbox{Normal}(0, 2.5) for \space t = 0, T
 \end{align}\]</span></p>
 <p>We run the model in R <span class="citation" data-cites="citeR">(<a href="#ref-citeR" role="doc-biblioref">R Core Team 2023</a>)</span> using the <code>rstanarm</code> package of <span class="citation" data-cites="rstanarm">Goodrich et al. (<a href="#ref-rstanarm" role="doc-biblioref">2022</a>)</span>. We use the default priors from <code>rstanarm</code>.</p>
 <section id="model-justification" class="level3" data-number="3.1.1">
@@ -599,8 +601,84 @@ logit(\mu_i) &amp;= \beta_0 + \beta_{y[i]}^{year} + \beta_{t[i]}^{theater} \\
 <section id="results" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Results</h1>
 <p>//TODO</p>
-<div id="tbl-modelresults" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="Explanatory models of flight time based on wing width and wing length">
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">1.692</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">theaters</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; box-shadow: 0px 1.5px;">Sigma[release_year × (Intercept),(Intercept)]</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">0.556</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">479</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2</td>
+<td style="text-align: center;">0.061</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R2 Marg.</td>
+<td style="text-align: center;">0.021</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Log.Lik.</td>
+<td style="text-align: center;">−123.048</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ELPD</td>
+<td style="text-align: center;">−127.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ELPD s.e.</td>
+<td style="text-align: center;">13.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LOOIC</td>
+<td style="text-align: center;">255.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LOOIC s.e.</td>
+<td style="text-align: center;">27.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">WAIC</td>
+<td style="text-align: center;">255.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RMSE</td>
+<td style="text-align: center;">0.27</td>
+</tr>
+</tbody>
+</table>
 
+
+</div>
+</div>
+<p>//TODO</p>
+<div id="tbl-modelresults" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="Explanatory models of flight time based on wing width and wing length">
+<div class="panel-caption table-caption">
+<p><strong>?(caption)</strong></p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p><img src="paper_files/figure-html/tbl-modelresults-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </div>
 </section>
 <section id="discussion" class="level1" data-number="5">
@@ -635,11 +713,16 @@ logit(\mu_i) &amp;= \beta_0 + \beta_{y[i]}^{year} + \beta_{t[i]}^{theater} \\
 <div id="fig-ppcheckandposteriorvsprior" class="cell quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p>Examining how the model fits, and is affected by, the data</p>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-ppcheckandposteriorvsprior" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="paper_files/figure-html/fig-ppcheckandposteriorvsprior-1.png" class="img-fluid figure-img" data-ref-parent="fig-ppcheckandposteriorvsprior" width="672"></p>
+<figcaption class="figure-caption">(a) Posterior prediction check</figcaption>
+</figure>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9: <strong>?(caption)</strong></figcaption><p></p>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9: Examining how the model fits, and is affected by, the data</figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -649,11 +732,24 @@ logit(\mu_i) &amp;= \beta_0 + \beta_{y[i]}^{year} + \beta_{t[i]}^{theater} \\
 <div id="fig-stanareyouokay" class="cell quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p>Checking the convergence of the MCMC algorithm</p>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-stanareyouokay-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="paper_files/figure-html/fig-stanareyouokay-1.png" class="img-fluid figure-img" data-ref-parent="fig-stanareyouokay" width="672"></p>
+<figcaption class="figure-caption">(a) Trace plot</figcaption>
+</figure>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;10: <strong>?(caption)</strong></figcaption><p></p>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-stanareyouokay-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="paper_files/figure-html/fig-stanareyouokay-2.png" class="img-fluid figure-img" data-ref-parent="fig-stanareyouokay" width="672"></p>
+<figcaption class="figure-caption">(b) Rhat plot</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10: Checking the convergence of the MCMC algorithm</figcaption><p></p>
 </figure>
 </div>
 <div style="page-break-after: always;"></div>

@@ -9,29 +9,39 @@
 #### Workspace setup ####
 library(tidyverse)
 library(rstanarm)
+library(arrow)
+library(dplyr)
+library(knitr)
+library(ggplot2)
+library(modelsummary)
+library(tidybayes)
+library(broom.mixed)
+library(bayesplot)
 
 #### Read data ####
-analysis_data <- read_parquet("data/analysis_data/movcomb.csv")
+analysis_data <- read_parquet("data/analysis_data/movcomb.parquet")
 
-analysis_data
+analysis_data$success <- as.numeric(analysis_data$averageRating >= 5)
+analysis_data$release_year<-as.factor(analysis_data$release_year)
+analysis_data$theaters<-as.numeric(analysis_data$theaters)
+
 
 ### Model data ####
-first_model <-
-  stan_glm(
-    formula = flying_time ~ length + width,
+second_model <-
+  stan_glmer(
+    formula = success ~ (1 | release_year) + theaters,
     data = analysis_data,
-    family = gaussian(),
-    prior = normal(location = 0, scale = 2.5, autoscale = TRUE),
-    prior_intercept = normal(location = 0, scale = 2.5, autoscale = TRUE),
-    prior_aux = exponential(rate = 1, autoscale = TRUE),
-    seed = 853
+    family = binomial(link = "logit"),
+    prior = normal(0, 2.5, autoscale = TRUE), 
+    prior_intercept = normal(0, 2.5, autoscale = TRUE)
   )
 
 
+modelsummary(second_model)
+
 #### Save model ####
 saveRDS(
-  first_model,
-  file = "models/first_model.rds"
+  second_model,
+  file = "models/second_model.rds"
 )
-
 

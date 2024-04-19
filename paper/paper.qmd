@@ -6,7 +6,7 @@ thanks: "Code and data are available at: https://github.com/dwz92/Analysis-on-Mo
 date: today
 date-format: long
 abstract: "In this study, we delve into the variables contributing to movie success, focusing on the interplay between a movies’ genre, number of theaters showing, the moth of release, and the year of premiere, particularly in the context of the pre and post-COVID-19 era, spanning from 2019 to 2022. This comprehensive analysis aims to shed light on the nuanced relationship between these variables and movie success, highlighting how the cinematic landscape has evolved in response to the COVID-19 pandemic. The findings of this study enrich our understanding of the determinants of cinematic success, providing valuable insights for filmmakers, distributors, and industry strategists in navigating the changing film industry."
-format: pdf
+format: html
 number-sections: true
 bibliography: references.bib
 ---
@@ -23,6 +23,10 @@ library(arrow)
 library(here)
 library(kableExtra)
 library(ggrepel)
+library(modelsummary)
+library(broom.mixed)
+library(tidybayes)
+library(bayesplot)
 ```
 
 
@@ -436,10 +440,9 @@ ggplot(df_long, aes(x = reorder(genres, numRele), y = averageRating, size = numR
 
 \begin{align} 
 y_i|\mu_i &\sim \mbox{Bern}(\mu_i) \\
-logit(\mu_i) &= \beta_0 + \beta_{y[i]}^{year} + \beta_{t[i]}^{theater} \\
+logit(\mu_i) &= \beta_0 + \beta_{y[i]}^{year} + \beta_2 \space \times \space theater_i \\
 \beta_0 &\sim \mbox{Normal}(0, 2.5) \\
 \beta_{y[i]}^{year} &\sim \mbox{Normal}(0, 2.5) for \space y = 2019, 2020, 2021, 2022 \\
-\\beta_{t[i]}^{theater} &\sim  \mbox{Normal}(0, 2.5) for \space t = 0, T
 \end{align} 
 
 We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
@@ -463,17 +466,36 @@ We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use
 #| warning: false
 #| message: false
 
-library(rstanarm)
+model2 <- read_rds(here::here("models/second_model.rds"))
 
-
+modelsummary(model2)
 ```
 
+
+//TODO
 ```{r}
 #| echo: false
 #| eval: true
 #| label: tbl-modelresults
 #| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
 #| warning: false
+
+model2 <- read_rds(here::here("models/second_model.rds"))
+
+model2 |>
+  spread_draws(`(Intercept)`, b[, group]) |>
+  mutate(condition_mean = `(Intercept)` + b) |>
+  ggplot(aes(y = group, x = condition_mean, fill = group)) +
+  stat_halfeye() +
+  labs(x = "Conditional Mean", y = "Group") +
+  theme(panel.background = element_rect(fill = "white"),
+              panel.grid.major = element_line(colour = "grey"),
+              plot.title = element_text(color = "black", size = 14, face = "bold"),
+              axis.title = element_text(color = "black"),
+        axis.text.y = element_text(size = 5),
+        legend.text = element_text(size = 7),
+        plot.caption = element_text(hjust = 0.5) +
+  coord_fixed(ratio = 0.7) )
 
 
 ```
@@ -518,8 +540,11 @@ library(rstanarm)
 #| label: fig-ppcheckandposteriorvsprior
 #| layout-ncol: 2
 #| fig-cap: "Examining how the model fits, and is affected by, the data"
-#| fig-subcap: ["Posterior prediction check", "Comparing the posterior with the prior"]
+#| fig-subcap: ["Posterior prediction check"]
 
+model2 <- read_rds(here::here("models/second_model.rds"))
+
+pp_check(model2) + theme_minimal()
 
 ```
 
@@ -536,6 +561,9 @@ library(rstanarm)
 #| fig-subcap: ["Trace plot", "Rhat plot"]
 #| layout-ncol: 2
 
+plot(model2, "trace")
+
+plot(model2, "rhat")
 
 ```
 
