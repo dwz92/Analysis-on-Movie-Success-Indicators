@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Models... [...UPDATE THIS...]
+# Purpose: Models the dataset from movcomb.parquet
 # Author: Qi Er (Emma) Teng
 # Date: 28 March 2024
 # Contact: e.teng@mail.utoronto.ca

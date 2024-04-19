@@ -2,9 +2,9 @@
 
 ## Overview
 
-This repo examining various factors that might influence a movie's performance and how they can be quantified and modeled. 
+This repo examining various factors that might influence a movie's performance and how they can be quantified and modeled. We study the variables contributing to movie success, focusing on the interplay between a movies’ genre, number of theaters showing, the moth of release, and the year of premiere, particularly in the context of the pre and post-COVID-19 era, spanning from 2019 to 2022.
 
-To use this folder, click the "Code" button", then "Download ZIP". Move the downloaded folder to where you want to work on your own computer, and then modify it to suit.
+For those interested in acquiring the datasets, please all R scripts within the repo.
 
 
 ## File Structure

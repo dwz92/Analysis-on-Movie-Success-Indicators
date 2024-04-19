@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Qi Er (Emma) Teng">
-<meta name="dcterms.date" content="2024-04-18">
+<meta name="dcterms.date" content="2024-04-19">
 
 <title>Analysis on Movie Success Indicators</title>
 <style>
@@ -88,7 +88,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 18, 2024</p>
+      <p class="date">April 19, 2024</p>
     </div>
   </div>
   
@@ -98,23 +98,31 @@ div.csl-indent {
 <div>
   <div class="abstract">
     <div class="abstract-title">Abstract</div>
-    In this study, we delve into the variables contributing to movie success, focusing on the interplay between a movies’ genre, number of theaters showing, the moth of release, and the year of premiere, particularly in the context of the pre and post-COVID-19 era, spanning from 2019 to 2022. This comprehensive analysis aims to shed light on the nuanced relationship between these variables and movie success, highlighting how the cinematic landscape has evolved in response to the COVID-19 pandemic. The findings of this study enrich our understanding of the determinants of cinematic success, providing valuable insights for filmmakers, distributors, and industry strategists in navigating the changing film industry.
+    In this study, we study the variables contributing to movie success, focusing on the interplay between a movies’ genre, number of theaters showing, the moth of release, and the year of premiere, particularly in the context of the pre and post-COVID-19 era, spanning from 2019 to 2022. This comprehensive analysis aims to shed light on the nuanced relationship between these variables and movie success, highlighting how the cinematic landscape has evolved in response to the COVID-19 pandemic. The findings of this study enrich our understanding of the determinants of cinematic success, providing valuable insights for filmmakers, distributors, and industry strategists in navigating the changing film industry.
   </div>
 </div>
 
 </header>
 
-<section id="introduction" class="level1" data-number="1">
+<section id="sec-intro" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>In the realm of global entertainment, movies hold a pivotal role, not only as a form of artistic expression but also as a significant driver of cultural and economic activity. The advent of COVID-19 has precipitated profound changes across the global media landscape, altering audience behaviors and consumption patterns. The surge in online media consumption during the pandemic has brought unprecedented challenges and transformations to the traditional movie industry. This shift has prompted a reevaluation of what factors contribute to a movie’s success in an era where digital platforms are increasingly dominating. Against this backdrop, this paper aims to analyze several indicators related to movie success, taking into account the impact of COVID-19 on both the production and consumption of films. By examining the interplay between various factors and movie ratings, this study seeks to uncover insights into the dynamics of movie success in a rapidly evolving media environment.</p>
-<p>Employing a multifaceted analytical approach that combines genre classification, theaters metrics, seasonal release timing, and annual trends, we probed the determinants of cinematic success in the fluctuating entertainment landscape from 2019 to 2022. Our study meticulously compiled data from Box Office Mojo and IMDb, focusing on films that achieved a commendable rating of 7/10 or above, signifying both critical and popular acclaim. Through the application of advanced statistical techniques and web scraping tools, we dissected the top 200 grossing films to unravel the intricate relationship between these variables and their collective impact on a movie’s success. A higher performance in these metrics typically correlates with a movie’s ability to resonate with diverse audiences, navigate distribution challenges, and capitalize on favorable release windows. This analysis not only sheds light on the evolving criteria for what makes a movie successful in the digital age but also offers insights into the strategic considerations filmmakers and distributors must weigh in an increasingly competitive and segmented market.</p>
-<p>The paper is structured to facilitate a comprehensive understanding of the study and its implications. Following Section 1, Section 2 presents the data, detailing the data sources, analytical techniques, and the rationale behind the chosen methods. Section 4 discusses the results. Section 5 provides an in-depth discussion of these findings.</p>
+<p>In the realm of global entertainment, movies hold a pivotal role, not only as a form of artistic expression but also as a significant driver of cultural and economic activity. The advent of COVID-19 has precipitated profound changes across the global media landscape, altering audience behaviors and consumption patterns<span class="citation" data-cites="Chauhan2020Empirical">(<a href="#ref-Chauhan2020Empirical" role="doc-biblioref">Chauhan and Shah 2020</a>)</span>. The surge in online media consumption during the pandemic has brought unprecedented challenges and transformations to the traditional movie industry. This shift has prompted a reevaluation of what factors contribute to a movie’s success in an era where digital platforms are increasingly dominating. Against this backdrop, this paper aims to analyze several indicators related to movie success, taking into account the impact of COVID-19 on both the production and consumption of films. By examining the interplay between various factors and movie ratings, this study seeks to uncover insights into the dynamics of movie success in a rapidly evolving media environment.</p>
+<p>Employing a multifaceted analytical approach that combines genre classification, theaters metrics, seasonal release timing, and annual trends, we probed the determinants of cinematic success in the fluctuating entertainment landscape from 2019 to 2022. Our study meticulously compiled data from Box Office Mojo and IMDb, focusing on films that achieved a commendable rating of 5/10 or above, signifying both critical and popular acclaim. Through the application of advanced statistical techniques and web scraping tools, we dissected the top 200 grossing films to unravel the intricate relationship between these variables and their collective impact on a movie’s success. A higher performance in these metrics typically correlates with a movie’s ability to resonate with diverse audiences, navigate distribution challenges, and capitalize on favorable release windows. This analysis not only sheds light on the evolving criteria for what makes a movie successful in the digital age but also offers insights into the strategic considerations filmmakers and distributors must weigh in an increasingly competitive and segmented market.</p>
+<p>The paper is structured to facilitate a comprehensive understanding of the study and its implications. Following <a href="#sec-intro">Section&nbsp;1</a>, <a href="#sec-data">Section&nbsp;2</a> presents the data, detailing the data sources, analytical techniques, and the rationale behind the chosen methods. <a href="#sec-result">Section&nbsp;4</a> discusses the results. <a href="#sec-discussion">Section&nbsp;5</a> provides an in-depth discussion of these findings.</p>
 </section>
 <section id="sec-data" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Data</h1>
-<p>//TODO</p>
-<section id="dataset-introduction" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="dataset-introduction"><span class="header-section-number">2.1</span> Dataset Introduction</h2>
+<p>This section presents the dataset we used to analyze the determinants of movie success from 2019 to 2022, covering the transformative period of the COVID-19 pandemic. Sourced from Box Office Mojo and IMDb, it allows us to trace trends and examine how industry shifts have influenced film performance and audience reception during these years. The data provide a vital context for understanding the interplay between movie success and external variables within this significant timeframe.</p>
+<section id="source-and-methodology" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="source-and-methodology"><span class="header-section-number">2.1</span> Source and Methodology</h2>
+<p>The data collection for this study involved two main sources: Box Office Mojo and IMDb. From Box Office Mojo, we obtained data on the top 200 grossing films released from 2019 to 2022 using <span class="citation" data-cites="citervest citetidy">(<a href="#ref-citervest" role="doc-biblioref">Wickham 2024</a>; <a href="#ref-citetidy" role="doc-biblioref">Wickham et al. 2019</a>)</span>. The information collected through web scraping included movie titles, total gross earnings, release years, dates, and the number of theaters each film was shown in. This set of data provides a foundation for understanding box office performance across a significant period, allowing us to analyze trends in audience preferences and theatrical success</p>
+<p>In parallel, we downloaded a comprehensive dataset from IMDb, which includes detailed information on all films since the inception of the cinema. Key data points extracted included movie titles, release years, genres, ratings, number of votes, and IMDb primary keys. The primary key is crucial as it uniquely identifies each film in the IMDb database, helping to avoid confusion with films that may share the same titles but differ in content or release periods.</p>
+<p>The integration process involved merging the data collected from Box Office Mojo with the IMDb dataset using <span class="citation" data-cites="citedpl citearrow citehere citetidy">(<a href="#ref-citedpl" role="doc-biblioref">Wickham et al. 2023</a>, <a href="#ref-citetidy" role="doc-biblioref">2019</a>; <a href="#ref-citearrow" role="doc-biblioref">Richardson et al. 2024</a>; <a href="#ref-citehere" role="doc-biblioref">Müller 2020</a>)</span>. We focused on a subset of 800 films listed in the Box Office Mojo data, correlating them with ratings from IMDb. The merger was facilitated by using the movie titles and release years as primary matching criteria to ensure accuracy in the data combination process. Special attention was given to handling discrepancies such as different naming conventions or release dates, using IMDb’s primary keys to resolve any ambiguities.</p>
+<p>The final dataset after merging and cleaning comprised 479 films that had sufficient data on both box office performance and IMDb ratings. This dataset included multiple variables of interest such as movie names, total gross values, release years, number of theaters, genres, IMDb ratings, and number of votes, which are essential for conducting a thorough analysis of factors influencing cinematic success.</p>
+</section>
+<section id="variables" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="variables"><span class="header-section-number">2.2</span> Variables</h2>
+<p>To elucidate the multifaceted dynamics of movie success, we compiled a summary table using <span class="citation" data-cites="citekextra">(<a href="#ref-citekextra" role="doc-biblioref">Zhu 2024</a>)</span> that systematically presents a detailed description of each variable, explaining its relevance and potential influence on movie ratings, which serve as a proxy for movie success. This approach allows us to dissect the components that could potentially interplay to affect a film critically.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-mov1922-mojo" class="anchored">
@@ -212,8 +220,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Talk more about it.</p>
-<p>// TODO</p>
+<p><a href="#tbl-mov1922-mojo">Table&nbsp;1</a> presents the top ten highest-grossing films of 2019, displaying their titles, release dates, the number of theaters they were released in, and the total gross revenue, which illustrates the commercial success of these blockbuster films.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-basic-info" class="anchored">
@@ -299,7 +306,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>//TODO</p>
+<p><a href="#tbl-basic-info">Table&nbsp;2</a> offers an overview of basic metadata from IMDb for an early set of films, including titles, release years, genres, and IMDb primary keys, providing a foundational dataset for analyzing historical trends in film characteristics.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-rating" class="anchored">
@@ -368,10 +375,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>//TODO</p>
-</section>
-<section id="variable" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="variable"><span class="header-section-number">2.2</span> Variable</h2>
+<p><a href="#tbl-rating">Table&nbsp;3</a> summarizes the IMDb ratings and the number of votes for a selection of films, alongside their unique IMDb identifiers, giving a snapshot of audience and critical reception which is essential for assessing a movie’s success and popularity.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-rating-info" class="anchored">
@@ -481,7 +485,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>//TODO</p>
+<p><a href="#tbl-rating-info">Table&nbsp;4</a>, crafted using sophisticated tabulation methods, provides an initial glance at the variables influencing movie success from 2019 to 2022. To dissect this table further, ‘Title’ denotes the unique name given to each film, serving as the primary reference for our analysis. The ‘Release Year’ and ‘Release Date’ columns offer temporal context, marking the specific time a movie entered the market, which is instrumental in understanding seasonal and annual market trends. The ‘Genres’ category unravels the stylistic and thematic fabric of a movie, which is vital in gauging audience appeal and genre popularity. ‘Rating’, derived from IMDb, reflects the aggregated critical and audience reception on a scale of 1 to 10. Lastly, ‘Released Theaters’ quantifies the scale of a movie’s distribution, a critical factor in its commercial reach. Together, these variables are woven into our analysis to elucidate the tapestry of factors that lead to a movie’s success.</p>
 <section id="relationship-between-movie-success-from-2019-to-2022-by-release-theaters" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="relationship-between-movie-success-from-2019-to-2022-by-release-theaters"><span class="header-section-number">2.2.1</span> Relationship between Movie Success from 2019 to 2022 by Release Theaters</h3>
 <div class="cell">
@@ -494,7 +498,6 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>//TODO</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-2020-movie-success-theaters" class="quarto-figure quarto-figure-center anchored">
@@ -505,7 +508,6 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>//TODO</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-2021-movie-success-theaters" class="quarto-figure quarto-figure-center anchored">
@@ -516,7 +518,6 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>//TODO</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-2022-movie-success-theaters" class="quarto-figure quarto-figure-center anchored">
@@ -527,7 +528,11 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>//TODO</p>
+<p>The visual data presented in <a href="#fig-2019-movie-success-theaters">Figure&nbsp;1</a> to <a href="#fig-2022-movie-success-theaters">Figure&nbsp;4</a> illustrate the relationship between the average IMDb ratings of movies and the number of release theaters across four consecutive years—2019 to 2022. Each figure provides a scatter plot, depicting individual movies as points positioned according to their average rating and the count of release theaters.</p>
+<p>In the 2019 chart, there is a noticeable cluster of films with higher ratings shown in a greater number of theaters. Moving into 2020, the dispersion of points widens, reflecting the disruption caused by the pandemic on theatrical releases and possibly the ratings. The impact of the pandemic is further visualized in the 2021 graph, where the concentration of films in theaters is visibly lower, and the spread of ratings appears more variable compared to the pre-pandemic era. The 2022 visualization sees a return to a pattern more reminiscent of 2019, with many films achieving higher ratings also enjoying broader theater release.</p>
+</section>
+<section id="relationship-between-movie-success-from-2019-to-2022-by-genres" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="relationship-between-movie-success-from-2019-to-2022-by-genres"><span class="header-section-number">2.2.2</span> Relationship between Movie Success from 2019 to 2022 by Genres</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-2019-movie-success-genre" class="quarto-figure quarto-figure-center anchored">
@@ -538,7 +543,6 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>//TODO</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-2020-movie-success-genre" class="quarto-figure quarto-figure-center anchored">
@@ -549,7 +553,6 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>//TODO</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-2021-movie-success-genre" class="quarto-figure quarto-figure-center anchored">
@@ -560,7 +563,6 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>//TODO</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-2022-movie-success-genre" class="quarto-figure quarto-figure-center anchored">
@@ -571,39 +573,59 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>//TODO</p>
+<p><a href="#fig-2019-movie-success-genre">Figure&nbsp;5</a> to <a href="#fig-2022-movie-success-genre">Figure&nbsp;8</a> collectively offer a graphical representation of movie ratings by genre from 2019 to 2022. These visuals chart the average ratings each movie genre received in their respective years, depicted against a backdrop that suggests the frequency of each genre’s occurrence and its success rate among audiences and critics.</p>
 </section>
+</section>
+<section id="measurement" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="measurement"><span class="header-section-number">2.3</span> Measurement</h2>
+<p>In our methodology, we delve into the origins and methods by which the data was collected from Box Office Mojo and IMDb, two comprehensive and authoritative sources in the film industry.</p>
+<p>Box Office Mojo provides detailed box office statistics, which are gathered from distributors and exhibitors. The data encompasses figures such as total gross values, which are routinely collected from cinema ticket sales, and released theaters count, which is reported by movie theaters. The release dates of movies are also meticulously tracked, providing precise temporal markers for each film’s market entry.</p>
+<p>IMDb is a rich repository of film information, where data on movie titles, release years, genres, ratings, and number of votes are accumulated from various contributors, including production companies, distributors, and public domain information. IMDb’s primary keys ensure a unique identifier for each film to maintain data integrity across their platform.</p>
+<p>By synthesizing data from these platforms, we constructed a comprehensive dataset that offers insights into the determinants of movie success. The movie title serves as the foundational identifier, while the release year and date reflect market entry timing. Genres categorize films stylistically, ratings measure critical and audience reception, and the number of released theaters indicates market distribution scale. Together, these data points furnish a multifaceted view of cinematic performance in the contemporary landscape.</p>
 </section>
 </section>
 <section id="model" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Model</h1>
-<p>//TODO</p>
+<p>Logistic regression is used when the dependent variable is binary, where the outcome is only between 0 and 1. Moreover, logistic regression is intended to model the probability that the dependent variable belongs to a particular category. Logistic regression is a special case of binomial regression, where each observation is a single Bernoulli trial.</p>
+<p>In the context of our paper, we will fit our multi-level model with the Logistic regression to discover the correlation between movie success and predictors that could effect the outcomes. We will model the possible effects of release year and number of theaters on movie ratings using logistic regression.</p>
 <section id="model-set-up" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="model-set-up"><span class="header-section-number">3.1</span> Model set-up</h2>
-<p>//TODO</p>
 <p><span class="math display">\[\begin{align}
 y_i|\mu_i &amp;\sim \mbox{Bern}(\mu_i) \\
 logit(\mu_i) &amp;= \beta_0 + \beta_{y[i]}^{year} + \beta_2 \space \times \space theater_i \\
 \beta_0 &amp;\sim \mbox{Normal}(0, 2.5) \\
 \beta_{y[i]}^{year} &amp;\sim \mbox{Normal}(0, 2.5) for \space y = 2019, 2020, 2021, 2022 \\
 \end{align}\]</span></p>
-<p>We run the model in R <span class="citation" data-cites="citeR">(<a href="#ref-citeR" role="doc-biblioref">R Core Team 2023</a>)</span> using the <code>rstanarm</code> package of <span class="citation" data-cites="rstanarm">Goodrich et al. (<a href="#ref-rstanarm" role="doc-biblioref">2022</a>)</span>. We use the default priors from <code>rstanarm</code>.</p>
-<section id="model-justification" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="model-justification"><span class="header-section-number">3.1.1</span> Model justification</h3>
-<p>//TODO</p>
+<ul>
+<li><span class="math inline">\(y_i\)</span> is a binary outcome that follows a Bernoulli distribution with success probability <span class="math inline">\(\mu_i\)</span>.</li>
+<li><span class="math inline">\(\beta_0\)</span> is the global intercept that represents the log-odds of success.</li>
+<li><span class="math inline">\(\beta_{y[i]}^{year}\)</span> is the random effect for release year, indicating that the log-odds of success can vary by the release year of the observation.</li>
+<li><span class="math inline">\(\beta_2\)</span> is the coefficient for the continuous predictor <span class="math inline">\(theater_i\)</span> indicating how the log-odds of success changes with the number of theaters.</li>
+</ul>
+<p>We run the model in R <span class="citation" data-cites="citeR">(<a href="#ref-citeR" role="doc-biblioref">R Core Team 2023</a>)</span> using the <code>rstanarm</code> package of <span class="citation" data-cites="rstanarm">Goodrich et al. (<a href="#ref-rstanarm" role="doc-biblioref">2022</a>)</span>, <code>broom.mixed</code> <span class="citation" data-cites="citebroom">Bolker and Robinson (<a href="#ref-citebroom" role="doc-biblioref">2022</a>)</span>, and <span class="citation" data-cites="citebayes">Gabry et al. (<a href="#ref-citebayes" role="doc-biblioref">2019</a>)</span>. We use the default priors from <code>rstanarm</code>.</p>
 </section>
-<section id="model-prediction" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="model-prediction"><span class="header-section-number">3.1.2</span> Model prediction</h3>
-<p>//TODO</p>
+<section id="model-justification" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="model-justification"><span class="header-section-number">3.2</span> Model justification</h2>
+<p>The goal of our model is to estimate the effects of the number of theaters and the release year on the log-odds of the binary outcome <span class="math inline">\(y_i\)</span>. This will help in understanding how the likelihood of success is influenced by these predictors under the model of logistic regression. This model is well-suited for our binary outcomes with hierarchical data as Binomial family is the standard approach for binary outcome variables in logistic regression. It is specifically designed to handle the 0/1 nature of binary data and to estimate the probability of movie success.</p>
 </section>
 </section>
+<section id="sec-result" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Result</h1>
+<p>This section unveils the core findings on the interplay between movie success and its determinants, with a particular focus on the roles of distribution scope and genre. It dissects how factors such as social class and the sweeping effects of the COVID-19 pandemic have influenced cinematic ratings and audience engagement.</p>
+<section id="data-visualization" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="data-visualization"><span class="header-section-number">4.1</span> Data Visualization</h2>
+<p>By examining <a href="#fig-2019-movie-success-theaters">Figure&nbsp;1</a> to <a href="#fig-2022-movie-success-theaters">Figure&nbsp;4</a>, the distribution of movie ratings against the number of theaters in which they were released, we draw the following observations:</p>
+<p>In 2019, films shown in more theaters often enjoyed higher IMDb ratings, suggesting a link between distribution breadth and success. The trend was disrupted in 2020, likely due to the pandemic, with a drop in theater counts and a wider spread in ratings. Nevertheless, films in more theaters still trended towards higher ratings. By 2021, as theaters increased akin to pre-pandemic levels, the correlation between extensive releases and ratings strengthened, implying a rebound in film success. In 2022, the pattern solidified, reaffirming the notion that widespread releases tend to be associated with higher ratings, indicative of commercial success.</p>
+<p>Overall, the data from 2019 to 2022 illustrate a consistent theme: movies that secure a wider release tend to have higher average ratings. While the pandemic year of 2020 is an outlier, showing a clear disruption in this trend, the following years demonstrate a return to this pattern.</p>
+<p>To further examine the trends in movie ratings by genre, we have segmented the data into various categories. The average rating for each genre is calculated and presented according to the corresponding year. In the figures, genres are denoted by their names along the x-axis, with the average IMDb rating depicted on the y-axis. From <a href="#fig-2019-movie-success-genre">Figure&nbsp;5</a> to <a href="#fig-2022-movie-success-genre">Figure&nbsp;8</a>, it is noticeable that certain genres consistently perform above the average rating of 6.5, marked by the dashed line. For instance, in 2019, genres like War, Documentary, and History are observed to have higher average ratings compared to Family or Sci-Fi. Over the span of four years, genres such as Documentary and Biography maintain a position above this average line, indicating a persistent favorability among audiences or critics. Conversely, genres like Horror show a fluctuation below this average line, suggesting a less consistent reception. Notably, the figures demonstrate a shift in genre popularity and critical reception over time, with some genres like Music and Western showing variable positions across the years. Additionally, the narrowing gap between the highest and lowest average ratings over the years implies a convergence in the critical reception of diverse genres. This trend suggests an evolving audience palate, where the distinction in preference for certain genres may be diminishing</p>
 </section>
-<section id="results" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Results</h1>
-<p>//TODO</p>
+<section id="model-visualization" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="model-visualization"><span class="header-section-number">4.2</span> Model Visualization</h2>
 <div class="cell">
 <div class="cell-output-display">
+<div id="tbl-modelresults" class="anchored">
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Table&nbsp;5: Model Summary</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -665,51 +687,57 @@ logit(\mu_i) &amp;= \beta_0 + \beta_{y[i]}^{year} + \beta_2 \space \times \space
 </tr>
 </tbody>
 </table>
+</div>
 
 
 </div>
 </div>
-<p>//TODO</p>
-<div id="tbl-modelresults" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="Explanatory models of flight time based on wing width and wing length">
-<div class="panel-caption table-caption">
-<p><strong>?(caption)</strong></p>
+<p><a href="#tbl-modelresults">Table&nbsp;5</a> showcases the estimated effects of the number of release theaters and the release year on movie ratings. The model’s intercept is significant, indicating that the average log-odds of a movie being highly rated is not zero when all predictors are at their reference levels. However, the predictor ‘theaters’ has an estimated coefficient close to zero with a non-significant p-value, suggesting that the number of theaters alone does not have a strong predictive power on movie ratings when other variables are accounted for. The variance component for the release year interaction with the intercept (Sigma[release_year × (Intercept),(Intercept)]) is noteworthy. It implies that there is a year-to-year variability in movie ratings that is not captured by the other variables in the model. This could point to other unobserved factors that are changing over time and impacting movie ratings. The low R2 values indicate that while the model captures some of the variability in movie ratings, a substantial amount of variation remains unexplained, which is not uncommon in complex social phenomena like movie success.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-modelvisual" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="paper_files/figure-html/fig-modelvisual-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;9: Model Visualization</figcaption>
+</figure>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="paper_files/figure-html/tbl-modelresults-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</div>
+<p>To better understand the model’s results, we visualize the data with <a href="#fig-modelvisual">Figure&nbsp;9</a>. This visualization conveys the conditional means of movie ratings by release year with corresponding density distributions, offering a clear depiction of the rating trends over the years in our dataset.</p>
+<p>The plots illustrate a shift in the distribution of movie ratings across the years. In 2020, the spread of ratings is notably wider compared to other years, likely reflecting the turbulent conditions of the film industry during the pandemic. The years 2021 and 2022 show a contraction of rating distributions, which could be interpreted as a sign of stabilization in the industry as it recovers from the pandemic’s impacts.</p>
+<p>The visualized data from <a href="#fig-modelvisual">Figure&nbsp;9</a> underscores the influence of temporal factors on movie ratings, aligning with the Model Summary’s indication of year-to-year variability. It visually reaffirms the narrative that external factors, such as the pandemic, have had a tangible effect on the industry, potentially altering audience’s rating behaviors.</p>
+<p>The synthesis of results from <a href="#tbl-modelresults">Table&nbsp;5</a> and <a href="#fig-modelvisual">Figure&nbsp;9</a> reveals a complex picture of the factors influencing movie ratings. The number of release theaters, a traditional indicator of movie success, does not show a significant impact in the model. Instead, the yearly variations and the spread of ratings underscore the multifaceted nature of movie success and point to a changing landscape influenced by broader, perhaps global, trends and events.</p>
 </section>
-<section id="discussion" class="level1" data-number="5">
+</section>
+<section id="sec-discussion" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Discussion</h1>
-<section id="sec-first-point" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="sec-first-point"><span class="header-section-number">5.1</span> First discussion point</h2>
-<p>//TODO</p>
+<p>This research offers fresh insights into the dynamics of film industry success, quantitatively reinforcing the influence of distribution breadth and genre on movie ratings. Our approach illuminates how external factors such as a global pandemic can act as catalysts for enduring changes within the industry, shifting not only audience consumption patterns but also the strategic direction of film distribution and production.</p>
+<section id="findings" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="findings"><span class="header-section-number">5.1</span> Findings</h2>
+<p>The analysis conducted in this study substantiates our hypotheses regarding the determinants of movie success. In 2019, the model reveals a notable trend where high ratings were associated with a substantial number of movie releases, suggesting that a greater distribution reach was often a precursor to higher ratings. This aligns with the prevalent industry notion that films with larger theatrical releases tend to be of higher quality, as they are anticipated to perform better and are thus allocated more screens. The year witnessed an overall high quality in movie production, reflected in the ratings, which in turn influenced the number of theaters willing to showcase these films.</p>
+<p>However, 2020 marked the onset of a cinematic winter, coinciding with the global spread of COVID-19. The pandemic’s disruption is evident in the significant deviation observed in the distribution of ratings and release patterns. As we progressed into 2021, the data pointed to a lowered overall rating and a reduced number of theater releases. Even films that garnered high ratings did not enjoy extensive distribution, reflecting a shift in consumption habits due to the pandemic. This not only affected the economic market but also potentially the quality of the films produced, as the industry grappled with new constraints and changing audience behaviors.</p>
 </section>
-<section id="second-discussion-point" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="second-discussion-point"><span class="header-section-number">5.2</span> Second discussion point</h2>
+<section id="economic-and-social-influence" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="economic-and-social-influence"><span class="header-section-number">5.2</span> Economic and Social Influence</h2>
+<p>The tremors felt in the film industry during the pandemic are a microcosm of the larger economic disruptions experienced worldwide. As economies contracted, discretionary spending dwindled, which in turn affected the film industry’s revenue streams. The industry faced a dual challenge: a drop in consumer spending power and a forced reduction in operational capacity due to public health measures. These factors led to a cautious stance on the part of studios and distributors. Budgets for production and marketing were slashed, and many films faced delays or reduced scale releases, as evidenced by the contraction in theater counts. The economic downturn also spurred a reassessment of the types of movies that were likely to attract viewers during such times, possibly favoring genres or themes that offered escapism or resonated with the zeitgeist of the pandemic era.</p>
+<p>On a social level, the pandemic has catalyzed a significant behavioral shift among audiences. With the closure of cinemas, the collective experience of movie-watching was reimagined. Viewers turned towards digital platforms as their primary source of entertainment, a trend that had been emerging but was vastly accelerated by the pandemic. This shift is not just a change in medium; it represents a transformation in the cultural fabric of movie consumption.</p>
+<p>This pivot to digital platforms also raises questions about the metrics of success in the film industry. With traditional box office returns losing some of their relevancy, alternative measures like viewership numbers, watch time, and subscriber growth on streaming services become important indicators of a film’s performance. Moreover, the social discourse surrounding a movie, amplified by social media, can significantly influence a film’s reach and reception, further underscoring the complex interplay of economic and social factors in the contemporary landscape of movie success.</p>
 </section>
-<section id="third-discussion-point" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="third-discussion-point"><span class="header-section-number">5.3</span> Third discussion point</h2>
-</section>
-<section id="weaknesses-and-next-steps" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="weaknesses-and-next-steps"><span class="header-section-number">5.4</span> Weaknesses and next steps</h2>
-<p>//TODO</p>
+<section id="weaknesses-and-future-research-directions" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="weaknesses-and-future-research-directions"><span class="header-section-number">5.3</span> Weaknesses and Future Research Directions</h2>
+<p>One of the main limitations of our study is the reliance on theater releases as a measure of success, without accounting for the growing prominence of digital platforms. The model also does not capture the qualitative aspects of films that could influence ratings, such as marketing efforts, critical reviews, and word-of-mouth.</p>
+<p>Future research should aim to integrate data from digital releases and consider alternative success metrics such as viewer engagement and retention on streaming platforms. It would also be beneficial to investigate the role of marketing and social media in influencing both ratings and viewership patterns.</p>
+<p>Additionally, with the industry’s pivot towards digital platforms, examining the economics of streaming services, including production costs and revenue models, would provide a more comprehensive understanding of contemporary movie success. Research could also explore the long-term impacts of the pandemic on consumer preferences and whether the changes observed during this period persist or revert to pre-pandemic trends.</p>
 <div style="page-break-after: always;"></div>
 </section>
 </section>
 <section id="appendix" class="level1 unnumbered">
 <h1 class="unnumbered">Appendix</h1>
 </section>
-<section id="additional-data-details" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Additional data details</h1>
-</section>
-<section id="sec-model-details" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Model details</h1>
-<section id="posterior-predictive-check" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="posterior-predictive-check"><span class="header-section-number">7.1</span> Posterior predictive check</h2>
-<p>//TODO</p>
+<section id="sec-model-details" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Model details</h1>
+<section id="posterior-predictive-check" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="posterior-predictive-check"><span class="header-section-number">6.1</span> Posterior predictive check</h2>
 <div id="fig-ppcheckandposteriorvsprior" class="cell quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -722,50 +750,79 @@ logit(\mu_i) &amp;= \beta_0 + \beta_{y[i]}^{year} + \beta_2 \space \times \space
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9: Examining how the model fits, and is affected by, the data</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10: Examining how the model fits, and is affected by, the data</figcaption><p></p>
 </figure>
 </div>
+<p>From spread and the central tendency of the simulated lines in <a href="#fig-ppcheckandposteriorvsprior">Figure&nbsp;10</a>, it seems that the model predicts a very steep change in the probability of success. As indicated from the sigmoid shape typical for logistic regression.</p>
 </section>
-<section id="diagnostics" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="diagnostics"><span class="header-section-number">7.2</span> Diagnostics</h2>
-<p>//TODO</p>
-<div id="fig-stanareyouokay" class="cell quarto-layout-panel">
+<section id="diagnostics" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="diagnostics"><span class="header-section-number">6.2</span> Diagnostics</h2>
+<div id="fig-trace-rhat" class="cell quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-stanareyouokay-1" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-trace-rhat-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="paper_files/figure-html/fig-stanareyouokay-1.png" class="img-fluid figure-img" data-ref-parent="fig-stanareyouokay" width="672"></p>
+<p><img src="paper_files/figure-html/fig-trace-rhat-1.png" class="img-fluid figure-img" data-ref-parent="fig-trace-rhat" width="672"></p>
 <figcaption class="figure-caption">(a) Trace plot</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-stanareyouokay-2" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-trace-rhat-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="paper_files/figure-html/fig-stanareyouokay-2.png" class="img-fluid figure-img" data-ref-parent="fig-stanareyouokay" width="672"></p>
+<p><img src="paper_files/figure-html/fig-trace-rhat-2.png" class="img-fluid figure-img" data-ref-parent="fig-trace-rhat" width="672"></p>
 <figcaption class="figure-caption">(b) Rhat plot</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;10: Checking the convergence of the MCMC algorithm</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;11: Checking the convergence of the MCMC algorithm</figcaption><p></p>
 </figure>
 </div>
+<p>From <a href="#fig-trace-rhat-1">Figure&nbsp;11 (a)</a>, the trace plot shows the sampled values of each parameter in the model across iterations of the MCMC algorithm. Each line represents a separate Markov chain. Since each parameters overlap and doesn’t show a clear trend in any direction, this suggests good mixing and that the chains have reached stationarity. This is indicates convergence as the chains have likely explored the posterior distribution thoroughly.</p>
+<p>From <a href="#fig-trace-rhat-2">Figure&nbsp;11 (b)</a>, the R-hat plot shows the R-hat statistic for each parameter in the model. R-hat is a convergence diagnostic, where values close to 1 indicate that the chains have converged to a common distribution. Since all the R-hat values are close to 1, this suggests that all chains for each parameter have converged to the same distribution, which is an indicator of good convergence.</p>
 <div style="page-break-after: always;"></div>
 </section>
 </section>
-<section id="references" class="level1 unnumbered" data-number="8">
+<section id="references" class="level1 unnumbered" data-number="7">
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">8 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">7 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-citebroom" class="csl-entry" role="listitem">
+Bolker, Ben, and David Robinson. 2022. <em>Broom.mixed: Tidying Methods for Mixed Models</em>. <a href="https://CRAN.R-project.org/package=broom.mixed">https://CRAN.R-project.org/package=broom.mixed</a>.
+</div>
+<div id="ref-Chauhan2020Empirical" class="csl-entry" role="listitem">
+Chauhan, V., and M. H. Shah. 2020. <span>“An Empirical Analysis into Sentiments, Media Consumption Habits, and Consumer Behaviour During the Coronavirus (COVID-19) Outbreak.”</span> <a href="https://doi.org/10.13140/RG.2.2.32269.15846">https://doi.org/10.13140/RG.2.2.32269.15846</a>.
+</div>
+<div id="ref-citebayes" class="csl-entry" role="listitem">
+Gabry, Jonah, Daniel Simpson, Aki Vehtari, Michael Betancourt, and Andrew Gelman. 2019. <span>“Visualization in Bayesian Workflow.”</span> <em>J. R. Stat. Soc. A</em> 182: 389–402. <a href="https://doi.org/10.1111/rssa.12378">https://doi.org/10.1111/rssa.12378</a>.
+</div>
 <div id="ref-rstanarm" class="csl-entry" role="listitem">
 Goodrich, Ben, Jonah Gabry, Imad Ali, and Sam Brilleman. 2022. <span>“Rstanarm: <span>Bayesian</span> Applied Regression Modeling via <span>Stan</span>.”</span> <a href="https://mc-stan.org/rstanarm/">https://mc-stan.org/rstanarm/</a>.
 </div>
+<div id="ref-citehere" class="csl-entry" role="listitem">
+Müller, Kirill. 2020. <em>Here: A Simpler Way to Find Your Files</em>. <a href="https://CRAN.R-project.org/package=here">https://CRAN.R-project.org/package=here</a>.
+</div>
 <div id="ref-citeR" class="csl-entry" role="listitem">
 R Core Team. 2023. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-citearrow" class="csl-entry" role="listitem">
+Richardson, Neal, Ian Cook, Nic Crane, Dewey Dunnington, Romain François, Jonathan Keane, Dragoș Moldovan-Grünfeld, Jeroen Ooms, Jacob Wujciak-Jens, and Apache Arrow. 2024. <em>Arrow: Integration to ’Apache’ ’Arrow’</em>. <a href="https://CRAN.R-project.org/package=arrow">https://CRAN.R-project.org/package=arrow</a>.
+</div>
+<div id="ref-citervest" class="csl-entry" role="listitem">
+Wickham, Hadley. 2024. <em>Rvest: Easily Harvest (Scrape) Web Pages</em>. <a href="https://CRAN.R-project.org/package=rvest">https://CRAN.R-project.org/package=rvest</a>.
+</div>
+<div id="ref-citetidy" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-citedpl" class="csl-entry" role="listitem">
+Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and Davis Vaughan. 2023. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
+</div>
+<div id="ref-citekextra" class="csl-entry" role="listitem">
+Zhu, Hao. 2024. <em>kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax</em>. <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.
 </div>
 </div></section></div></main>
 <!-- /main column -->
