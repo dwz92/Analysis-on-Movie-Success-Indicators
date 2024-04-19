@@ -34,7 +34,7 @@ library(bayesplot)
 
 In the realm of global entertainment, movies hold a pivotal role, not only as a form of artistic expression but also as a significant driver of cultural and economic activity. The advent of COVID-19 has precipitated profound changes across the global media landscape, altering audience behaviors and consumption patterns. The surge in online media consumption during the pandemic has brought unprecedented challenges and transformations to the traditional movie industry. This shift has prompted a reevaluation of what factors contribute to a movie's success in an era where digital platforms are increasingly dominating. Against this backdrop, this paper aims to analyze several indicators related to movie success, taking into account the impact of COVID-19 on both the production and consumption of films. By examining the interplay between various factors and movie ratings, this study seeks to uncover insights into the dynamics of movie success in a rapidly evolving media environment.
 
-Employing a multifaceted analytical approach that combines genre classification, theaters metrics, seasonal release timing, and annual trends, we probed the determinants of cinematic success in the fluctuating entertainment landscape from 2019 to 2022. Our study meticulously compiled data from Box Office Mojo and IMDb, focusing on films that achieved a commendable rating of 7/10 or above, signifying both critical and popular acclaim. Through the application of advanced statistical techniques and web scraping tools, we dissected the top 200 grossing films to unravel the intricate relationship between these variables and their collective impact on a movie's success. A higher performance in these metrics typically correlates with a movie's ability to resonate with diverse audiences, navigate distribution challenges, and capitalize on favorable release windows. This analysis not only sheds light on the evolving criteria for what makes a movie successful in the digital age but also offers insights into the strategic considerations filmmakers and distributors must weigh in an increasingly competitive and segmented market.
+Employing a multifaceted analytical approach that combines genre classification, theaters metrics, seasonal release timing, and annual trends, we probed the determinants of cinematic success in the fluctuating entertainment landscape from 2019 to 2022. Our study meticulously compiled data from Box Office Mojo and IMDb, focusing on films that achieved a commendable rating of 5/10 or above, signifying both critical and popular acclaim. Through the application of advanced statistical techniques and web scraping tools, we dissected the top 200 grossing films to unravel the intricate relationship between these variables and their collective impact on a movie's success. A higher performance in these metrics typically correlates with a movie's ability to resonate with diverse audiences, navigate distribution challenges, and capitalize on favorable release windows. This analysis not only sheds light on the evolving criteria for what makes a movie successful in the digital age but also offers insights into the strategic considerations filmmakers and distributors must weigh in an increasingly competitive and segmented market.
 
 The paper is structured to facilitate a comprehensive understanding of the study and its implications. Following Section 1, Section 2 presents the data, detailing the data sources, analytical techniques, and the rationale behind the chosen methods. Section 4 discusses the results. Section 5 provides an in-depth discussion of these findings.
 
@@ -152,7 +152,7 @@ ggplot(mov2019, aes(x = plot_date, y = averageRating, fill = theaters)) +
        fill = "Release Theaters") +
   scale_x_date(date_labels = "%b %d", date_breaks = "1 month") +
   scale_fill_gradient(low = "lightblue", high = "darkred") +
-  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = 5, linetype = "dashed", color = "red") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         legend.position = "right")
@@ -183,7 +183,7 @@ ggplot(mov2020, aes(x = plot_date, y = averageRating, fill = theaters)) +
        fill = "Release Theaters") +
   scale_x_date(date_labels = "%b %d", date_breaks = "1 month") +
   scale_fill_gradient(low = "lightblue", high = "darkred") +
-  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = 5, linetype = "dashed", color = "red") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         legend.position = "right")
@@ -213,7 +213,7 @@ ggplot(mov2021, aes(x = plot_date, y = averageRating, fill = theaters)) +
        fill = "Release Theaters") +
   scale_x_date(date_labels = "%b %d", date_breaks = "1 month") +
   scale_fill_gradient(low = "lightblue", high = "darkred") +
-  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = 5, linetype = "dashed", color = "red") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         legend.position = "right")
@@ -244,7 +244,7 @@ ggplot(mov2022, aes(x = plot_date, y = averageRating, fill = theaters)) +
        fill = "Release Theaters") +
   scale_x_date(date_labels = "%b %d", date_breaks = "1 month") +
   scale_fill_gradient(low = "lightblue", high = "darkred") +
-  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = 5, linetype = "dashed", color = "red") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         legend.position = "right")
@@ -288,7 +288,7 @@ ggplot(df_long, aes(x = reorder(genres, numRele), y = averageRating, size = numR
     segment.color = NA 
   ) +
   scale_size_continuous(range = c(5, 30)) +
-  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = 5, linetype = "dashed", color = "red") +
   theme_minimal() +
   theme(legend.position = "none",
         axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -332,7 +332,7 @@ ggplot(df_long, aes(x = reorder(genres, numRele), y = averageRating, size = numR
     segment.color = NA 
   ) +
   scale_size_continuous(range = c(5, 30)) +
-  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = 5, linetype = "dashed", color = "red") +
   theme_minimal() +
   theme(legend.position = "none",
         axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -376,7 +376,7 @@ ggplot(df_long, aes(x = reorder(genres, numRele), y = averageRating, size = numR
     segment.color = NA 
   ) +
   scale_size_continuous(range = c(5, 30)) +
-  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = 5, linetype = "dashed", color = "red") +
   theme_minimal() +
   theme(legend.position = "none",
         axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -420,7 +420,7 @@ ggplot(df_long, aes(x = reorder(genres, numRele), y = averageRating, size = numR
     segment.color = NA 
   ) +
   scale_size_continuous(range = c(5, 30)) +
-  geom_hline(yintercept = 7, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = 5, linetype = "dashed", color = "red") +
   theme_minimal() +
   theme(legend.position = "none",
         axis.text.x = element_text(angle = 45, hjust = 1)) +
