@@ -33,7 +33,8 @@ second_model <-
     data = analysis_data,
     family = binomial(link = "logit"),
     prior = normal(0, 2.5, autoscale = TRUE), 
-    prior_intercept = normal(0, 2.5, autoscale = TRUE)
+    prior_intercept = normal(0, 2.5, autoscale = TRUE),
+    prior_aux = exponential(rate = 1, autoscale = TRUE)
   )
 
 
